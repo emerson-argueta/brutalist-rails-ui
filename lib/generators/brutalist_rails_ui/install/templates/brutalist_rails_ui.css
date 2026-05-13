@@ -30,10 +30,6 @@
     @apply px-6 py-3 bg-black;
   }
 
-  .card-header h2, .card-header p {
-    @apply text-xs font-bold text-white uppercase tracking-wider;
-  }
-
   /* Table */
   .table-brutal {
     @apply w-full;
