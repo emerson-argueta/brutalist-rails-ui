@@ -20,6 +20,14 @@ rails g brutalist_rails_ui:install
 bin/rails tailwindcss:build
 ```
 
+Add to `app/helpers/application_helper.rb`:
+
+```ruby
+module ApplicationHelper
+  include BrutalistRailsUi::Helpers
+end
+```
+
 The generator:
 - Copies `brutalist_rails_ui.css` → `app/assets/tailwind/`
 - Injects `@import "./brutalist_rails_ui"` into `application.css`
