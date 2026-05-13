@@ -191,6 +191,47 @@ Options:
 - `cancel_text` — cancel button label (default: `Cancel`)
 - `cancel_frame` — turbo frame for cancel link (default: `_top`)
 
+## Usage with WASM (wasm-rails)
+
+When running inside [wasm-rails](https://github.com/emerson-argueta/wasm-rails), three extra steps are required because Bundler auto-require and engine view path registration don't work in the WASM environment.
+
+### 1. Explicit require in `config/application.rb`
+
+`Bundler.require` is skipped in WASM, so add an explicit require alongside your other gems:
+
+```ruby
+require "wasm_rails"
+require "brutalist_rails_ui"
+require "turbo-rails"
+```
+
+### 2. Include helpers in `ApplicationHelper`
+
+Rails hooks like `ActiveSupport.on_load` and `config.to_prepare` don't fire reliably in WASM. Include helpers directly instead:
+
+```ruby
+module ApplicationHelper
+  include BrutalistRailsUi::Helpers
+end
+```
+
+### 3. Bundle the gem's ERB partials
+
+Add `brutalist_rails_ui` to `GEM_EXTRA_PATHS` in `bin/build_app_bundle.mjs` so the gem's `app/views` are included in the WASM bundle:
+
+```js
+const GEM_EXTRA_PATHS = {
+  'turbo-rails': ['app/controllers', 'app/controllers/concerns', 'app/helpers', 'app/models', 'app/models/concerns', 'app/views'],
+  'brutalist_rails_ui': ['app/views'],
+};
+```
+
+Then rebuild:
+
+```bash
+npm run build:app
+```
+
 ## Requirements
 
 - Ruby 3.1+
