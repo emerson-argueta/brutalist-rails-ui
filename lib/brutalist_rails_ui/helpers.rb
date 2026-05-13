@@ -1,11 +1,18 @@
 module BrutalistRailsUi
   module Helpers
     # Nav link that highlights when active.
-    def nav_link(label, path, **options)
+    # Pass mobile: true for the vertical mobile menu variant.
+    def nav_link(label, path, mobile: false, **options)
       active = current_page?(path) || request.path.start_with?(path.split("?").first)
-      classes = active \
-        ? "bg-yellow-400 text-black px-3 py-4 text-sm font-bold border-r border-l border-yellow-400" \
-        : "text-white hover:bg-white hover:text-black px-3 py-4 text-sm font-bold border-r border-gray-700 last:border-r-0"
+      if mobile
+        classes = active \
+          ? "block bg-yellow-400 text-black px-4 py-3 text-sm font-bold border-b border-gray-700" \
+          : "block text-white hover:bg-gray-800 px-4 py-3 text-sm font-bold border-b border-gray-700"
+      else
+        classes = active \
+          ? "bg-yellow-400 text-black px-3 py-4 text-sm font-bold border-r border-l border-yellow-400" \
+          : "text-white hover:bg-white hover:text-black px-3 py-4 text-sm font-bold border-r border-gray-700 last:border-r-0"
+      end
       link_to label, path, class: classes, **options
     end
 
