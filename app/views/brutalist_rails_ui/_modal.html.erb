@@ -1,0 +1,15 @@
+<turbo-frame id="<%= local_assigns.fetch(:frame_id, "modal") %>">
+  <div class="fixed inset-0 bg-black/60 flex items-center justify-content z-50"
+       data-controller="modal"
+       data-action="click->modal#closeOnBackdrop">
+    <div class="bg-white border-2 border-black w-full <%= local_assigns.fetch(:width, "max-w-sm") %> overflow-hidden mx-auto"
+         data-modal-target="panel">
+      <div class="px-6 py-3 bg-black">
+        <h2 class="text-sm font-black text-white uppercase tracking-wider"><%= title %></h2>
+      </div>
+      <div class="<%= local_assigns.fetch(:body_class, "p-6") %>">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+</turbo-frame>

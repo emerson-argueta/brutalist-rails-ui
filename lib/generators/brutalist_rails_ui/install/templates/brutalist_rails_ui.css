@@ -1,0 +1,92 @@
+@layer components {
+  /* Buttons */
+  .btn-primary {
+    @apply inline-flex items-center px-4 py-2 text-sm font-bold bg-black text-white hover:bg-yellow-400 hover:text-black border-2 border-black cursor-pointer;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center px-4 py-2 text-sm font-bold bg-white text-black hover:bg-yellow-400 border-2 border-black cursor-pointer;
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center px-4 py-2 text-sm font-bold bg-red-600 text-white hover:bg-red-700 border-2 border-black cursor-pointer;
+  }
+
+  /* Form controls */
+  .input {
+    @apply w-full border-2 border-black px-3 py-2 text-sm font-mono focus:outline-none focus:border-black bg-white;
+  }
+
+  .label {
+    @apply block text-xs font-bold uppercase tracking-wide mb-1;
+  }
+
+  /* Layout */
+  .card {
+    @apply bg-white border-2 border-black overflow-hidden;
+  }
+
+  .card-header {
+    @apply px-6 py-3 bg-black;
+  }
+
+  .card-header h2, .card-header p {
+    @apply text-xs font-bold text-white uppercase tracking-wider;
+  }
+
+  /* Table */
+  .table-brutal {
+    @apply w-full;
+  }
+
+  .table-brutal thead {
+    @apply bg-black;
+  }
+
+  .table-brutal thead th {
+    @apply px-6 py-3 text-left text-xs font-bold text-gray-400 uppercase tracking-wider;
+  }
+
+  .table-brutal tbody {
+    @apply divide-y-2 divide-black bg-white;
+  }
+
+  .table-brutal tbody tr {
+    @apply hover:bg-gray-50;
+  }
+
+  .table-brutal tbody td {
+    @apply px-6 py-3 text-sm;
+  }
+
+  /* Badge */
+  .badge {
+    @apply inline-flex items-center border-2 border-black px-2 py-0.5 text-xs font-bold uppercase tracking-wide;
+  }
+
+  /* Money input wrapper */
+  .money-input {
+    @apply relative;
+  }
+
+  .money-input .money-prefix {
+    @apply absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm font-bold pointer-events-none;
+  }
+
+  .money-input .input {
+    @apply pl-7;
+  }
+
+  /* Progress bar */
+  .progress-bar {
+    @apply h-2 bg-gray-200 overflow-hidden;
+  }
+
+  .progress-bar-fill {
+    @apply h-full bg-black transition-all;
+  }
+
+  .progress-bar-fill.over {
+    @apply bg-red-600;
+  }
+}

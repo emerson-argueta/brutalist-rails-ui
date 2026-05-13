@@ -1,0 +1,13 @@
+<% if pagy.last > 1 %>
+  <div class="flex items-center justify-between mt-4 text-sm font-bold border-2 border-black px-4 py-3 bg-white">
+    <span class="text-xs uppercase tracking-wide">Showing <%= pagy.from %>–<%= pagy.to %> of <%= pagy.count %></span>
+    <div class="flex gap-0">
+      <% if pagy.previous %>
+        <%= link_to "← Prev", url_for(page: pagy.previous), class: "px-3 py-1 border-2 border-black hover:bg-yellow-400 font-bold text-xs" %>
+      <% end %>
+      <% if pagy.next %>
+        <%= link_to "Next →", url_for(page: pagy.next), class: "px-3 py-1 border-2 border-black hover:bg-yellow-400 font-bold text-xs" %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
